@@ -68,7 +68,7 @@ endfunction
 
 function! s:Runner()
   if s:InRspecFile()
-    return 'rspec'
+    return 'm'
   elseif s:InJavascriptFile() && s:InGemfile('teaspoon')
     if s:Preloader() ==# 'zeus'
       return 'rake teaspoon'
@@ -81,11 +81,11 @@ function! s:Runner()
 endfunction
 
 function! s:InRspecFile()
-  return match(@%, '_spec\.rb$') != -1
+  return match(@%, '_test\.rb$') != -1
 endfunction
 
 function! s:InJavascriptFile()
-  return match(@%, '_spec\.\(js\.coffee\|js\|coffee\)$') != -1
+  return match(@%, '_test\.\(js\.coffee\|js\|coffee\)$') != -1
 endfunction
 
 function! s:Preloader()
@@ -117,7 +117,7 @@ function! s:Focus(runner, focused)
 endfunction
 
 function! s:RunnerSupportsFocusedSpecs(runner)
-  return a:runner ==# 'rspec'
+  return a:runner ==# 'm'
 endfunction
 
 function! s:FileContains(filename, text)
