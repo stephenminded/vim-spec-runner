@@ -68,7 +68,7 @@ endfunction
 
 function! s:Runner()
   if s:InRspecFile()
-    return 'm'
+    return 'bundle exec m'
   elseif s:InJavascriptFile() && s:InGemfile('teaspoon')
     if s:Preloader() ==# 'zeus'
       return 'rake teaspoon'
@@ -117,7 +117,7 @@ function! s:Focus(runner, focused)
 endfunction
 
 function! s:RunnerSupportsFocusedSpecs(runner)
-  return a:runner ==# 'm'
+  return a:runner ==# 'bundle exec m'
 endfunction
 
 function! s:FileContains(filename, text)
